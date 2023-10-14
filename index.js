@@ -3,8 +3,10 @@ var app = express()
 var bodyParser = require('body-parser')
 var pool = require('./queries')
 var query = require('./movies')
+var paginate = require('./paginate')
 var jwt = require('jsonwebtoken')
 
+app.use('/verify/:token', paginate)
 app.use('/verify/:token', query)
 
 app.use(express.json())
@@ -34,6 +36,7 @@ app.get('/login', function (req, res) {
     }
 })
 
+//verify
 app.get('/verify/:token', function (req, res) {
     const data = jwt.verify(
         req.params.token,
