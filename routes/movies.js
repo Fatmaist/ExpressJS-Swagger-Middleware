@@ -230,7 +230,7 @@ router.post('/movies', function (req, res) {
                 return
             }
             movies.push(req.body)
-            res.json({message: "New movie created.", location: "/movies/" + id})
+            res.json({message: "New movie created.", location: "/verify/:token/movies/" + id})
         })
     }
 })
@@ -251,7 +251,7 @@ router.put('/movies/:id', function (req, res) {
                 return movie.id != id
             })
             movies.push(req.body)
-            res.json({message: "Movie id " + id + " updated.", location: "/movies/" + id})
+            res.json({message: "Movie id " + id + " updated.", location: "/verify/:token/movies/" + id})
         })
     }
 })
@@ -271,7 +271,7 @@ router.delete('/movies/:id', function (req, res) {
             movies = movies.filter(function (movie) {
                 return movie.id != movieId
             })
-            res.json({ message: "Movie id " + movieId + " removed.", location: "/movies/" + movieId })
+            res.json({ message: "Movie id " + movieId + " removed.", location: "/verify/:token/movies/" + movieId })
         }
     })
 })

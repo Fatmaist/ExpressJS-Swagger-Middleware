@@ -7,8 +7,9 @@ var paginate = require('./paginate')
 var jwt = require('jsonwebtoken')
 var swaggerJsDoc = require('swagger-jsdoc')
 var swaggerUi = require('swagger-ui-express')
+var morgan = require('morgan')
 
-
+app.use(morgan('tiny'))
 app.use('/verify/:token', paginate)
 app.use('/verify/:token', movies)
 
